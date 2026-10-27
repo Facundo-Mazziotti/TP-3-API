@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+}
+.pokemon-container {
+    margin-left: 2vw;
+    background-color: rgb(247, 242, 231);
+    display: flex;
+    flex-wrap: wrap;
+    
+  }
+
+.card{
+    margin-left: 3vw;
+  width: 30vw;
+  height: auto;
+  overflow-wrap: anywhere;
+  background-color: white;
+  box-shadow: .1vw .2vh .1vh #000000;
+  display: flex;
+  margin: 1vw 1vh 1vw 1vh;
+  flex-direction: column;
+  border-radius: 5%;
+  padding-bottom: 3vh;
+}
+.tipo{
+    border: #000000 solid .1vh;
+    margin-left: 2vw;
+}
