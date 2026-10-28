@@ -1,11 +1,11 @@
-
+let pokemones = []
 async function cargarPokemones(){
   const respuesta = await fetch('https://pokeapi.co/api/v2/pokemon?limit=100')
   const data = await respuesta.json()
   const results =  data.results
 
 
-const pokemones = await Promise.all(
+pokemones = await Promise.all(
   results.map(async (pokemon) =>{
     const resultado = await fetch('https://pokeapi.co/api/v2/pokemon/' + pokemon.name)
     const p = await resultado.json()
@@ -17,8 +17,10 @@ const pokemones = await Promise.all(
   } 
   )
 )
+actualizarFiltros()
 mostrarPokemon(pokemones)
 }
+
 
 
 
@@ -44,27 +46,27 @@ const container = document.getElementById('pokemon-container')
     }
     cargarPokemones()
 
-    const buscador = document.getElementById("buscador")
+const buscador = document.getElementById("buscador")
 const filtroTipos = document.getElementById("filtroTipos")
 const filtroRegiones = document.getElementById("filtroRegiones") 
 
 function filtrar(){
   const pokemonesFiltrados = pokemones.filter( pokemon => {
-    return pokemon.tipo.includes(filtroTipos.value)
+    return pokemon.types.includes(filtroTipos.value)
       && pokemon.region.includes(filtroRegiones.value)
   })
-  cargarPokemones(pokemonesFiltrados)
+  mostrarPokemon(pokemonesFiltrados)
 }
 
 function buscar(){
   const texto = buscador.value.toLowerCase()
 
   const pokemonesFiltrados = pokemones.filter ( pokemon =>{
-    return pokemon.nombre.toLowerCase().includes(texto)
-      || pokemon.tipo.toLowerCase().includes(texto)
+    return pokemon.name.toLowerCase().includes(texto)
+      || pokemon.type.toLowerCase().includes(texto)
       || pokemon.region.toLowerCase().includes(texto)
   })
-  cargarPokemones(pokemonesFiltrados)
+  mostrarPokemon(pokemonesFiltrados)
 }
 
 filtroTipos.addEventListener("change", filtrar)
@@ -77,22 +79,22 @@ filtroTipos.innerHTML =  `<option value="">Todas los tipos</option>`
 filtroRegiones.innerHTML =  `<option value="">Todas las regiones</option>`
 
   let tipos = []
-  let provincias = []
+  let regiones = []
 
   pokemones.forEach(pokemon => {
     
-    if( !tipos.includes(pokemon.tipo) ) {
-    tipos.push(pokemon.tipo)
+    if( !tipos.includes(pokemon.type) ) {
+    tipos.push(pokemon.type)
     }
-    if( !provincias.includes(comida.provincia) ) {
-      provincias.push(comida.provincia)
+    if( !regiones.includes(pokemon.region) ) {
+      regiones.push(pokemon.region)
     }
   })
 
   tipos.forEach(tipo =>{
-    filtroTipos.innerHTML +=  `<option value="${tipo}">${tipo}</option>`
+    filtroTipos.innerHTML +=  `<option value="${type}">${type}</option>`
   })
-  provincias.forEach(provincia => {
-    filtroProvincia.innerHTML += `<option value="${provincia}">${provincia}</option>`
+  regiones.forEach(region => {
+    filtroRegiones.innerHTML += `<option value="${region}">${region}</option>`
   })
 }
