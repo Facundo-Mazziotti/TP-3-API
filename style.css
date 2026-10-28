@@ -23,6 +23,8 @@
   padding-bottom: 3vh;
 }
 .tipo{
-    border: #000000 solid .1vh;
+    background-color: rgb(219, 224, 224);
     margin-left: 2vw;
+    width: 3vw;
+    border-radius: 5px;
 }
