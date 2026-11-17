@@ -26,16 +26,30 @@ body{
   padding-bottom: 3vh;
 }
 
-.tipos{
-  width: 30vw;
+.pokemon{
+  margin-left: 2vw;
+  margin-top: 2vh;
+}
+.region{
+  display: inline-block;
+  background-color: rgb(219, 224, 224);
+  
+  width: 7vw;
+  display: flex;
+    align-items: center;
+    justify-content: center;
+  font-weight: 1000;
+  border-radius: 5px;
+  margin-top: 1vh;
+  color: #000;
 }
 .tipo{
     display: inline-block;
     background-color: rgb(219, 224, 224);
-    margin-left: 2vw;
-    width: 7vw;
-    text-align: center;
     
+    width: 7.5vw;
+    text-align: center;
+    margin-left: 1.5vw;
     border-radius: 5px;
     margin-top: 1vh;
     
@@ -60,3 +74,14 @@ body{
 .dark     { background-color: #705746; }
 .steel    { background-color: #b7b7ce; color: #000; }
 .fairy    { background-color: #d685ad; }
+
+.spans{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.tipos{
+  display: flex;
+  justify-content: space-evenly;
+
+}

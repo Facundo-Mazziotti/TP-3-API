@@ -54,7 +54,10 @@ const container = document.getElementById('pokemon-container')
       container.innerHTML += 
     `
        <article class= "card">
+       <div class="spans">
        <h3 class="tipos">${tipos}</h3>
+         <span class="region ${pokemon.region}">${pokemon.region}</span>
+         </div>
       <h2 class= "pokemon">${pokemon.name}</h2>
       <img src="${pokemon.img}">
     </article>
